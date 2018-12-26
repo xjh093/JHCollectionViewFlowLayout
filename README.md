@@ -1,15 +1,21 @@
 # JHCollectionViewFlowLayout
-CollectionView横向排版 & CollectionView horizontal layout
+CollectionView horizontal layout
+- CollectionView横向排版
+    
+--- 
 
-系统排版 & System layout
+# What
+System layout & 系统排版
 
 ![image](https://github.com/xjh093/JHCollectionViewFlowLayout/blob/master/system.png)
 
-自定义排版 & Custom layout
+Custom layout & 自定义排版
 
 ![image](https://github.com/xjh093/JHCollectionViewFlowLayout/blob/master/custom.png)
 
+---
 
+# API
 .h
 ```
 #import <UIKit/UIKit.h>
