@@ -5,11 +5,11 @@ CollectionView horizontal layout
 --- 
 
 # What
-System layout & 系统排版
+System layout
 
 ![image](https://github.com/xjh093/JHCollectionViewFlowLayout/blob/master/system.png)
 
-Custom layout & 自定义排版
+Custom layout
 
 ![image](https://github.com/xjh093/JHCollectionViewFlowLayout/blob/master/custom.png)
 
