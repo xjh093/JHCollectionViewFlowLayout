@@ -18,7 +18,10 @@ Custom layout
 # Log
 
 ### 2019-11-8
-- add `showLastPageFull`
+- add `showLastPageFull`.
+
+### 2017-09-18
+- upload.
 
 ---
 
