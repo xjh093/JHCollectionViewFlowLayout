@@ -35,6 +35,15 @@
 
 @implementation JHCollectionViewFlowLayout
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _showLastPageFull = YES;
+    }
+    return self;
+}
+
 - (void)prepareLayout
 {
     [super prepareLayout];
@@ -82,7 +91,14 @@
 //返回总的可见尺寸
 //避免一页未排满，滑动显示不全
 - (CGSize)collectionViewContentSize{
-    int width = (int)ceil(_attributesArray.count/(_row * _column * 1.0)) * _pageWidth;
+    CGFloat width = (CGFloat)ceil(_attributesArray.count/(_row * _column * 1.0)) * _pageWidth;
+    if (!_showLastPageFull) {
+        NSInteger lastCount = _attributesArray.count%(_row * _column);
+        if (lastCount > 0 && lastCount < _column) {
+            width = _attributesArray.count/(_row * _column) * _pageWidth;
+            width += (_size.width + _columnSpacing)*lastCount;
+        }
+    }
     return CGSizeMake(width, 0);
 }
 
