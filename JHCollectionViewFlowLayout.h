@@ -42,5 +42,6 @@
 @property (nonatomic, assign) CGSize size;
 ///一页的宽度
 @property (nonatomic, assign) CGFloat pageWidth;
-
+///默认YES。根据最后一页的个数，是否展示完整的一页
+@property (nonatomic, assign) BOOL showLastPageFull;
 @end
