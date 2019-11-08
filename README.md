@@ -15,6 +15,13 @@ Custom layout
 
 ---
 
+# Log
+
+### 2019-11-8
+- add `showLastPageFull`
+
+---
+
 # API
 .h
 ```
@@ -33,7 +40,8 @@ Custom layout
 @property (nonatomic, assign) CGSize size;
 ///一页的宽度
 @property (nonatomic, assign) CGFloat pageWidth;
-
+///默认YES。根据最后一页的个数，是否展示完整的一页
+@property (nonatomic, assign) BOOL showLastPageFull;
 @end
 ```
 
@@ -46,6 +54,15 @@ Custom layout
 @end
 
 @implementation JHCollectionViewFlowLayout
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _showLastPageFull = YES;
+    }
+    return self;
+}
 
 - (void)prepareLayout
 {
@@ -94,7 +111,14 @@ Custom layout
 //返回总的可见尺寸
 //避免一页未排满，滑动显示不全
 - (CGSize)collectionViewContentSize{
-    int width = (int)ceil(_attributesArray.count/(_row * _column * 1.0)) * _pageWidth;
+    CGFloat width = (CGFloat)ceil(_attributesArray.count/(_row * _column * 1.0)) * _pageWidth;
+    if (!_showLastPageFull) {
+        NSInteger lastCount = _attributesArray.count%(_row * _column);
+        if (lastCount > 0 && lastCount < _column) {
+            width = _attributesArray.count/(_row * _column) * _pageWidth;
+            width += (_size.width + _columnSpacing)*lastCount;
+        }
+    }
     return CGSizeMake(width, 0);
 }
 
